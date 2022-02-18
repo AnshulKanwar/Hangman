@@ -78,10 +78,9 @@ int main()
         }
         if (!isWordUsed)
         {
-
-            triesLeft--;
-
             isCompleted = true;
+            bool isCorrect = false;
+
             for (int i = 0; i < word.size(); i++)
             {
                 // if entered char matches anywhere
@@ -89,6 +88,7 @@ int main()
                 if (randomWord[i] == guess)
                 {
                     word[i] = guess;
+                    isCorrect = true;
                 }
                 // also check if the game is completed
                 // (by checking for any left _)
@@ -96,6 +96,10 @@ int main()
                 {
                     isCompleted = false;
                 }
+            }
+
+            if (!isCorrect) {
+                triesLeft--;
             }
 
             usedWords.push_back(guess);
